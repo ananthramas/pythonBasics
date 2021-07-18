@@ -1,0 +1,3 @@
+run="python Day2/guessWifeName.py"
+language="python3"
+onBoot="echo Booting up!"
