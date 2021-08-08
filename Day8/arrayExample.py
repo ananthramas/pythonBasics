@@ -9,9 +9,3 @@ for studentName in studentNames :
     longestName = studentName
  
 print("Longest namne : ",longestName)
-
-
-
-
-
-
