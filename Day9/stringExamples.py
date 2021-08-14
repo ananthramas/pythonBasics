@@ -1,4 +1,3 @@
-# For examples
 #for examples 
 
 tempString = "Weekends are fun!"
