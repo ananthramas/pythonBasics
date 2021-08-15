@@ -1,14 +1,20 @@
-# For examples
-#for examples 
+import turtle
 
-tempString = "Weekends are fun!"
-  
-# Access string character as  array of caracter
-print(tempString[0])
+chintu = turtle.Turtle()
+chintu.shape("turtle")
 
-#substring 
-print(tempString[0:7])
+#number of pixels 
+chintu.forward(50)
+#trun to angel
+chintu.left(60)
+#stop drawing
+chintu.up()
+chintu.forward(50)
+#start drawing
+chintu.down()
+chintu.right(90)
+chintu.forward(50)
+#radius of circle
+chintu.circle(20)
+input("Enter to exit")
 
-#get length of strin
-
-print("String length : ",len(tempString))
