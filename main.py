@@ -168,6 +168,7 @@ while True:
     
     chintu.up()  # while resting psotion lifft pen i.e don't draw
     #chintu.home() # start from intial location
+    input()
     chintu.goto(xCor, yCor) # start drawing
     chintu.down()  
 

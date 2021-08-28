@@ -1,5 +1,13 @@
 {
   "files": {
+    "Day13/star.py": [
+      {
+        "id": "d5f44c25-8db2-422f-b1a0-f49137a91f1e",
+        "line": 1,
+        "version": 13,
+        "index": 0
+      }
+    ],
     "Day6/ATMPin.py": [
       {
         "id": "3dc4ef56-2ccb-4e44-9cbd-c81fd2283cdf",
@@ -11,9 +19,9 @@
     "main.py": [
       {
         "id": "41026b6b-178e-4517-a6ef-51f9afe7ff86",
-        "line": 9,
-        "version": 4916,
-        "index": 149
+        "line": 177,
+        "version": 5267,
+        "index": 3148
       }
     ]
   }
