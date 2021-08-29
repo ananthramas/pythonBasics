@@ -1,176 +1,199 @@
-
-  
+# import required modules 
 import turtle 
+import time 
+import random 
 
-chintu = turtle.Turtle()
-chintu.shape("turtle")
+delay = 0.3 
+score = 0 
+high_score = 0 
 
-def draw1():
-  chintu.left(90)
-  chintu.forward(50)
+# Creating a window screen 
+wn = turtle.Screen() 
+wn.title("Arrow Control Game") 
+wn.bgcolor("blue") 
+# the width and height can be put as usdder's choice 
+wn.setup(width=600, height=600) 
+wn.tracer(0) 
 
-def draw2() :
-  chintu.forward(25)
-  chintu.up() # lift pen up
-  chintu.backward(25) # pixels
-  chintu.down()# pen down
-  chintu.left(90) # 
-  chintu.forward(25)
-  chintu.right(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
+currentColor = 'white' 
 
-def draw3() :
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.up()
-  chintu.back(25)
-  chintu.down()
-  chintu.right(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
+downColor = 'white' 
+upColor = 'yellow' 
 
-def draw4() :
-  chintu.left(90)
-  chintu.up()
-  chintu.forward(50)
-  chintu.down()
-  chintu.backward(25)
-  chintu.right(90)
-  chintu.forward(25)
-  chintu.backward(13)
-  chintu.left(90)
-  chintu.forward(13)
-  chintu.backward(39)
+segment = turtle.Turtle() 
+segment.hideturtle() 
+segment.up() 
+segment.goto(-300,0) 
+segment.down() 
 
-def draw5() :
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.right(90)
-  chintu.forward(25)
-  chintu.right(90)
-  chintu.forward(25)
+ballx = -275 
+bally = -2 
 
-def draw6() :
-  chintu.left(90)
-  chintu.up()
-  chintu.forward(25)
-  chintu.right(90)
-  chintu.down()
-  chintu.forward(25)
-  chintu.right(90)
-  chintu.forward(25)
-  chintu.right(90)
-  chintu.forward(25)
-  chintu.right(90)
-  chintu.forward(50)
-  chintu.right(90)
-  chintu.forward(25)
+ball = turtle.Turtle() 
+ball.penup() 
+ball.hideturtle() 
+ball.goto(-275, -2) 
+ball.pendown() 
+ball.color('black',currentColor) 
+ball.begin_fill() 
+ball.circle(10) 
+ball.end_fill() 
 
-def draw7() :
-  chintu.up()
-  chintu.forward(25)
-  chintu.down()
-  chintu.left(90)
-  chintu.forward(50)
-  chintu.left(90   )
-  chintu.forward(25) 
-
-def draw8() :
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(50)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(50)
-  chintu.up()
-  chintu.back(25)
-  chintu.down()
-  chintu.left(90)
-  chintu.forward(25)
-
-def draw9():
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(50)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(25)
-
-def draw0() :
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(50)
-  chintu.left(90)
-  chintu.forward(25)
-  chintu.left(90)
-  chintu.forward(50)
-
-xCor = chintu.xcor();
-yCor= chintu.ycor();
+pen = turtle.Turtle() 
+pen.speed(0) 
+pen.color("white") 
+pen.penup() 
+pen.hideturtle() 
+pen.goto(0, 250) 
+pen.write("Score : 0 Lives : 3", 
+align="center", 
+font=("candara", 24, "bold")) 
 
 
+arrow = turtle.Turtle() 
+arrow.speed(1) 
+xVal = [-275, -225, -175, -125 ,-75, -25, 25, 75, 125, 175, 225, 275] 
 
+arrowX = 0 
+
+def refreshScrore(score, life): 
+ global pen 
+ pen.clear() 
+ pen.write("Score : {} Life : {} ".format(score, life),
+          align="center",
+          font=("candara", 24, "bold"))
+
+def drawArrow(): 
+ time.sleep(delay) 
+
+ global arrowX 
+ arrowX = random.choice(xVal) 
+ arrow.reset() 
+ arrow.penup() 
+ arrow.goto(arrowX,300) 
+ arrow.down() 
+ arrow.right(90) 
+ arrow.forward(250) 
+
+#arrow.clear() 
+
+def drawSeg(): 
+ for segCount in range(6) : 
+  segment.forward(50) 
+
+  segment.left(90) 
+  segment.forward(50) 
+
+  segment.right(90) 
+  segment.forward(50) 
+
+  segment.right(90) 
+  segment.forward(50) 
+
+  segment.left(90) 
+
+
+def drawBall() : 
+ global currentColor 
+
+if currentColor == 'white': 
+ currentColor = 'yellow' 
+elif currentColor == 'yellow' : 
+ currentColor = 'white' 
+
+ball.color('black',currentColor) 
+ball.begin_fill() 
+ball.circle(10) 
+ball.end_fill() 
+
+def goup(): 
+ global bally 
+bally = bally + 10 
+ball.clear() 
+ball.penup() 
+ball.goto(ballx, bally) 
+ball.pendown() 
+ball.circle(10) 
+
+
+def godown(): 
+ global bally 
+bally = bally - 10 
+ball.clear() 
+ball.penup() 
+ball.goto(ballx, bally) 
+ball.pendown() 
+ball.circle(10) 
+
+def goleft(): 
+ global ballx,bally 
+
+if ballx > -275 : 
+ ballx = ballx - 50 
+
+if bally == 52 : 
+ bally = 2 
+else : 
+ bally = 52 
+
+ball.clear() 
+ball.penup() 
+ball.goto(ballx, bally) 
+ball.pendown() 
+drawBall() 
+
+def goright(): 
+ global ballx,bally 
+
+if ballx <= 250 : 
+ ballx = ballx + 50 
+
+if bally == 52 : 
+ bally = 2 
+else : 
+ bally = 52 
+
+ball.clear() 
+ball.penup() 
+ball.goto(ballx, bally) 
+ball.pendown() 
+drawBall() 
+
+drawSeg() 
+
+wn.listen() 
+#wn.onkeypress(goup, "w") 
+#wn.onkeypress(godown, "s") 
+wn.onkeypress(goleft, "a") 
+wn.onkeypress(goright, "d") 
+
+lifeCount = 3 
+level = 0 
+
+prevEnd = -275 
+# Main Gameplay 
 while True: 
-  
-  chintu.hideturtle()
-  number = input("Enter number to be displayed - ")
-  chintu.reset() # wipe off screen content
-  chintu.showturtle()
-  
-  xCor =0  # initial x location
+ if ballx == 275 or ballx == -275 : 
+   if prevEnd != ballx : 
+     level +=1 
+refreshScrore(level,lifeCount) 
+prevEnd = ballx 
 
-  if number=="007" :   # condition exit loop
-    break
-  
-  for num  in number :  # get single digit and draw it
-    num = int(num)
-    if num == 1 :
-      draw1()
-    elif num == 2 :
-      draw2()
-    elif num== 3 :
-      draw3()
-    elif num == 4 :
-      draw4()
-    elif num == 5 :
-      draw5()
-    elif num== 6 :
-      draw6()
-    elif num == 7 :
-      draw7()
-    elif num == 8 :
-      draw8()
-    elif num == 9 :
-      draw9()
-    elif num == 0 :
-      draw0()
-    else :
-      print(num ,"not supported ")
-    if  num == 1 : 
-     xCor = xCor + 10
-    else :
-      xCor = xCor + 30
-    
-    chintu.up()  # while resting psotion lifft pen i.e don't draw
-    #chintu.home() # start from intial location
-    input()
-    chintu.goto(xCor, yCor) # start drawing
-    chintu.down()  
+if level == 2 : 
+ wn.bgcolor("green") 
 
-    chintu.left(360-chintu.heading())
-   
+if arrowX == ballx and lifeCount > 0 : 
+ lifeCount -= 1 
+refreshScrore(level,lifeCount) 
+
+
+wn.update() 
+
+if lifeCount > 0 : 
+ drawArrow() 
+else : 
+ wn.bgcolor("red") 
+
+time.sleep(delay) 
+
+wn.mainloop()
